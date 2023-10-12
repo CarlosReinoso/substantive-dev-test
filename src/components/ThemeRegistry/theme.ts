@@ -1,7 +1,7 @@
-import { Roboto } from 'next/font/google';
+import { Rubik } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
 
-const roboto = Roboto({
+const rubik = Rubik({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
   display: 'swap',
@@ -12,7 +12,7 @@ const theme = createTheme({
     mode: 'light',
   },
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: rubik.style.fontFamily,
   },
   components: {
     MuiAlert: {
