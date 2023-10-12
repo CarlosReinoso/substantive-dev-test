@@ -6,6 +6,7 @@ specifiers:
   '@emotion/styled': latest
   '@mui/icons-material': latest
   '@mui/material': latest
+  '@mui/x-data-grid': ^6.16.2
   '@types/node': latest
   '@types/react': latest
   '@types/react-dom': latest
@@ -22,6 +23,7 @@ dependencies:
   '@emotion/styled': 11.11.0_jmq7vtnxonm6pzu7seddp5n3ou
   '@mui/icons-material': 5.14.13_vjlskx4alq24hxoescdlft5dvi
   '@mui/material': 5.14.13_ilrnc7hlezzqnkssx4v64xzfpy
+  '@mui/x-data-grid': 6.16.2_vz4p725euwan2thggid3rzgf3q
   next: 13.5.4_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -467,6 +469,27 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-is: 18.2.0
+    dev: false
+
+  /@mui/x-data-grid/6.16.2_vz4p725euwan2thggid3rzgf3q:
+    resolution: {integrity: sha512-nKZxlzkcqXUbgxvz01J0okziBH4uvnEVVneOSzp5TeCOC7Wke1YFBJRRjR6H6tVpbaqlOw/LFULrTfcJtiaMBQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.4.1
+      '@mui/system': ^5.4.1
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.23.2
+      '@mui/material': 5.14.13_ilrnc7hlezzqnkssx4v64xzfpy
+      '@mui/utils': 5.14.13_4r6hgnselqdgzo3f3gd364vqle
+      clsx: 2.0.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      reselect: 4.1.8
+    transitivePeerDependencies:
+      - '@types/react'
     dev: false
 
   /@next/env/13.5.4:
@@ -2318,6 +2341,10 @@ packages:
       define-properties: 1.2.1
       set-function-name: 2.0.1
     dev: true
+
+  /reselect/4.1.8:
+    resolution: {integrity: sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==}
+    dev: false
 
   /resolve-from/4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
