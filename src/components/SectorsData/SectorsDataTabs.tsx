@@ -9,7 +9,7 @@ import PieChartTab from "./PieChartTab";
 import AllInteractionsTab from "./AllInteractionsTab";
 
 export default function SectorsDataTabs() {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState("3");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
