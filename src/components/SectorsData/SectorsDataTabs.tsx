@@ -7,6 +7,7 @@ import TabList from "@mui/lab/TabList";
 import TableTab from "./TableTab";
 import PieChartTab from "./PieChartTab";
 import AllInteractionsTab from "./AllInteractionsTab";
+import axios from "axios";
 
 export default function SectorsDataTabs() {
   const [value, setValue] = React.useState("3");
