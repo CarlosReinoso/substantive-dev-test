@@ -16,6 +16,7 @@
     "@mui/icons-material": "latest",
     "@mui/lab": "5.0.0-alpha.148",
     "@mui/material": "latest",
+    "@mui/x-charts": "6.0.0-alpha.15",
     "@mui/x-data-grid": "^6.16.2",
     "axios": "^1.5.1",
     "next": "latest",
