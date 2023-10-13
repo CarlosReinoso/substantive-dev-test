@@ -27,3 +27,9 @@ const sectorPercentage<[{}]> = return an array of objects with name of sector an
 
         #66CCCC // button color
         #112A42 // text colour
+
+
+### Improve
+- add animations
+- customise tab button interaction a bit more
+- add more of Substantive Research style

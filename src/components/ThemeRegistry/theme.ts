@@ -29,6 +29,13 @@ const theme = createTheme({
         }),
       },
     },
+    MuiTabs: {
+      styleOverrides: {
+        flexContainer: {
+          justifyContent: "space-around",
+        },
+      },
+    },
   },
 });
 
