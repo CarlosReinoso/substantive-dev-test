@@ -1,30 +1,37 @@
+import { IInteractions } from "@/interfaces/sectors";
 import { NextResponse } from "next/server";
+
+interface ISectorCounts {
+  [key: string]: number;
+}
 
 export async function GET() {
   const res = await fetch("https://substantive.pythonanywhere.com/");
   const { interactions } = await res.json();
 
-  const totalInteractions = interactions.length;
-
-  const percentages = {} as any;
-
-  for (const sector of interactions) {
-    const item = sector.name;
-    const count = percentages[item] || 0;
-    percentages[item] = count + 1;
-  }
-
-  for (const item in percentages) {
-    const count = percentages[item];
-    const percentage = Math.floor((count / totalInteractions) * 100);
-    percentages[item] = percentage;
-  }
-
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
 
+  const sectorCounts: ISectorCounts = {};
+
+  interactions.forEach((interaction: IInteractions) => {
+    const { name } = interaction;
+    sectorCounts[name] = (sectorCounts[name] || 0) + 1;
+  });
+
+  const totalInteractions = interactions.length;
+
+  const sectorsWithPercentage = Object.keys(sectorCounts).map(
+    (sectorName, id) => ({
+      sector: sectorName,
+      percentage: Math.floor(
+        (sectorCounts[sectorName] / totalInteractions) * 100
+      ),
+      id,
+    })
+  );
   return NextResponse.json({
-    percentages,
+    percentages: sectorsWithPercentage,
   });
 }

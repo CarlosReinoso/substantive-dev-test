@@ -1,5 +1,4 @@
 "use client";
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -8,13 +7,41 @@ import TableTab from "./TableTab";
 import PieChartTab from "./PieChartTab";
 import AllInteractionsTab from "./AllInteractionsTab";
 import axios from "axios";
+import { CircularProgress } from "@mui/material";
+import { useEffect, useState } from "react";
+import { IInteractions } from "@/interfaces/sectors";
 
 export default function SectorsDataTabs() {
-  const [value, setValue] = React.useState("3");
+  const [value, setValue] = useState("1");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
+
+  const [data, setData] = useState<IInteractions[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("api/percentages")
+      .then((response) => {
+        setData(response.data.percentages);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <CircularProgress />;
+  }
+
+  if (error) {
+    return <div>Error</div>;
+  }
 
   return (
     <Box sx={{ width: "60%", typography: "body1" }}>
@@ -29,8 +56,8 @@ export default function SectorsDataTabs() {
             <Tab label="All Interactions" value="3" />
           </TabList>
         </Box>
-        <TableTab />
-        <PieChartTab />
+        <TableTab data={data} />
+        <PieChartTab data={data} />
         <AllInteractionsTab />
       </TabContext>
     </Box>

@@ -1,3 +1,4 @@
+import { IPercentage } from "@/interfaces/sectors";
 import { TabPanel } from "@mui/lab";
 import { CircularProgress } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
@@ -5,7 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function AllInteractionsTab() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<IPercentage[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -39,7 +40,7 @@ export default function AllInteractionsTab() {
   return (
     <TabPanel value="3">
       <div style={{ height: 400, width: "100%" }}>
-        <DataGrid rows={data} columns={columns} pageSize={5} />
+        <DataGrid rows={data} columns={columns} />
       </div>
     </TabPanel>
   );
