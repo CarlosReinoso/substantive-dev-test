@@ -33,4 +33,4 @@ const sectorPercentage<[{}]> = return an array of objects with name of sector an
 - add animations
 - customise tab button interaction a bit more
 - add more of Substantive Research style
-- improve on mobile responsiveness
+- improve on mobile responsivenessde

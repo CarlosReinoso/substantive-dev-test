@@ -1,26 +1,29 @@
-import { IPercentage } from "@/interfaces/sectors";
+import { IInteractions } from "@/interfaces/sectors";
+import { addId } from "@/util/mui-table";
 import { TabPanel } from "@mui/lab";
 import { CircularProgress } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 
 export default function AllInteractionsTab() {
-  const [data, setData] = useState<IPercentage[]>([]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<AxiosError<IInteractions> | null>(null);
 
   useEffect(() => {
-    axios
-      .get("api/interactions")
-      .then((response) => {
-        setData(response.data.interactions);
+    (async () => {
+      try {
+        const res = await axios.get(
+          process.env.NEXT_PUBLIC_INTERACTIONS_API as string
+        );
+        setData(res.data.interactions);
         setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
+      } catch (error) {
+        setError(error as AxiosError<IInteractions>);
         setLoading(false);
-      });
+      }
+    })();
   }, []);
 
   if (loading) {
@@ -40,7 +43,7 @@ export default function AllInteractionsTab() {
   return (
     <TabPanel value="3">
       <div style={{ height: 400, width: "100%" }}>
-        <DataGrid rows={data} columns={columns} />
+        <DataGrid rows={addId(data)} columns={columns} />
       </div>
     </TabPanel>
   );

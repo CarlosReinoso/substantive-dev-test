@@ -1,9 +1,9 @@
-import { IInteractions, IPercentage } from "@/interfaces/sectors";
+import { IPercentage } from "@/interfaces/sectors";
 import { TabPanel } from "@mui/lab";
 import { PieChart, pieArcClasses } from "@mui/x-charts/PieChart";
 
-export default function PieChartTab({ data }: { data: IInteractions[] }) {
-  const updateData = data.map((item: any) => ({
+export default function PieChartTab({ data }: { data: IPercentage[] }) {
+  const updatedKeysData = data.map((item: IPercentage) => ({
     label: item.sector,
     value: item.percentage,
     id: item.id,
@@ -15,7 +15,7 @@ export default function PieChartTab({ data }: { data: IInteractions[] }) {
       <PieChart
         series={[
           {
-            data: updateData,
+            data: updatedKeysData,
             highlightScope: { faded: "global", highlighted: "item" },
             faded: { innerRadius: 30, additionalRadius: -30 },
             outerRadius: 120,

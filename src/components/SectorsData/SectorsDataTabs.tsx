@@ -6,10 +6,9 @@ import TabList from "@mui/lab/TabList";
 import TableTab from "./TableTab";
 import PieChartTab from "./PieChartTab";
 import AllInteractionsTab from "./AllInteractionsTab";
-import axios from "axios";
 import { CircularProgress } from "@mui/material";
-import { useEffect, useState } from "react";
-import { IInteractions } from "@/interfaces/sectors";
+import { useState } from "react";
+import usePercentagesData from "@/hooks/usePercentages";
 
 export default function SectorsDataTabs() {
   const [value, setValue] = useState("1");
@@ -18,22 +17,7 @@ export default function SectorsDataTabs() {
     setValue(newValue);
   };
 
-  const [data, setData] = useState<IInteractions[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get("api/percentages")
-      .then((response) => {
-        setData(response.data.percentages);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
+  const { data, loading, error } = usePercentagesData();
 
   if (loading) {
     return <CircularProgress />;

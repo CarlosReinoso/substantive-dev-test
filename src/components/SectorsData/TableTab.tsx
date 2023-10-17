@@ -1,9 +1,9 @@
-import { IInteractions } from "@/interfaces/sectors";
+import { IPercentage } from "@/interfaces/sectors";
 import { TabPanel } from "@mui/lab";
 import { Box, LinearProgress, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
-export default function TableTab({ data }: { data: IInteractions[] }) {
+export default function TableTab({ data }: { data: IPercentage[] }) {
   const columns = [
     { field: "sector", headerName: "Sector", flex: 1 },
     {
@@ -16,9 +16,10 @@ export default function TableTab({ data }: { data: IInteractions[] }) {
             <LinearProgress variant="determinate" {...params} />
           </Box>
           <Box sx={{ minWidth: 35 }}>
-            <Typography variant="body2" color="text.secondary">{`${Math.round(
-              params.value
-            )}%`}</Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+            >{`${params.value}%`}</Typography>
           </Box>
         </>
       ),
